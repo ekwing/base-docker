@@ -1,19 +1,14 @@
-ARG ARG_ALPINE_VERSION=3.9
-ARG ARG_NODE_VERSION=12.2.0
-ARG ARG_YARN_VERSION=1.16.0
-
-FROM "alpine:${ARG_ALPINE_VERSION}"
+FROM alpine:3.9
 
 LABEL maintainer="L-Chris@563303226@qq.com"
 
-ENV ALPINE_VERSION=${ARG_ALPINE_VERSION} \
-  NODE_VERSION=${ARG_NODE_VERSION} \
-  YARN_VERSION=${ARG_YARN_VERSION}\
-  BINARY_PREFIX=/usr/bin
-
 USER root
 
-RUN echo "https://mirrors.aliyun.com/alpine/v$ALPINE_VERSION/main/" > /etc/apk/repositories
+ARG NODE_VERSION=12.2.0
+ARG YARN_VERSION=1.16.0
+ENV BINARY_PREFIX=/usr/bin
+
+RUN echo "https://mirrors.aliyun.com/alpine/v3.9/main/" > /etc/apk/repositories
 
 RUN set -x \
   && apk add --no-cache libstdc++ \
