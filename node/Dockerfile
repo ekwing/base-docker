@@ -90,6 +90,4 @@ RUN apk del .build-deps \
     /var/cache/apk/* \
     /usr/share/man
 
-RUN yarn global add whistle whistle.nohost
-
-ENTRYPOINT [ "w2", "start" ]
+RUN yarn global add pm2
