@@ -20,7 +20,10 @@ RUN set -x \
     gnupg \
     linux-headers \
     make \
-    python
+    python \
+    tzdata
+
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN for key in \
     94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
@@ -68,14 +71,14 @@ RUN for key in \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg ${BINARY_PREFIX}/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
-RUN npm config set registry http://npm.ekwing.com \
+RUN npm config set registry http://npm.gz.ekwing.com \
   && npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass \
   && npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs \
   && npm config set electron_mirror https://npm.taobao.org/mirrors/electron \
   && npm config set chromedriver_cdnurl https://npm.taobao.org/mirrors/chromedriver \
   && npm config set puppeteer_download_host https://storage.googleapis.com.cnpmjs.org
 
-RUN yarn config set registry http://npm.ekwing.com \
+RUN yarn config set registry http://npm.gz.ekwing.com \
   && yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass \
   && yarn config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs \
   && yarn config set electron_mirror https://npm.taobao.org/mirrors/electron \
