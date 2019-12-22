@@ -1,2 +1,5 @@
 # base-docker
-基础docker镜像
+
+Features:
+- node
+- php
